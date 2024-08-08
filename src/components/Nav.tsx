@@ -17,7 +17,7 @@ function Nav() {
     <>
       <div className='w-full text-white bg-slate-800 p-5 z-20  fixed  top-0 overflow-hidden'>
         <div className='max-w-[2000px] xl:px-[150px] md:px-[30px]  lg:px-[90px] sm:px-[20px] justify-between items-center flex'>
-          <span className='flex font-thin justify-center items-center'>
+          <span className='flex font-mono justify-center items-center'>
             <Image
               src={Aryan123}
               alt='logo'

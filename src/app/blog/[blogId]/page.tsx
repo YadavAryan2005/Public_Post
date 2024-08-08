@@ -12,9 +12,9 @@ function Blog({
   };
 }) {
   return (
-    <div className='bg-[#0d0c22] mt-20 relative flex min-h-[86vh] w-full rounded-xl p-4 pt-8 lg:min-h-[98vh]'>
-      <div className='max-w-[2000px] mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row gap-8 justify-center items-center'>
-        <div className='w-full md:w-1/2 flex justify-center'>
+    <div className='bg-[#0d0c22] mt-20 mb-20 relative flex min-h-[86vh] w-full rounded-xl p-4 pt-8 lg:min-h-[98vh]'>
+      <div className='max-w-[2000px] overflow-hidden mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row gap-8 justify-center items-center'>
+        <div className='w-full  md:w-1/2 flex justify-center'>
           {searchParams.img.endsWith(".pdf") ? (
             <iframe
               src={"/" + searchParams.img}
