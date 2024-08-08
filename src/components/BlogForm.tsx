@@ -7,7 +7,7 @@ function BlogForm(props: any) {
   return (
     <div
       key={props.id}
-      className='bg-gray-800 text-white sm:min-w-[400px]  p-5 flex flex-col rounded-md border border-gray-700 shadow-lg'
+      className='bg-gray-800 text-white   p-5 flex flex-col rounded-md border border-gray-700 shadow-lg'
       style={{ height: "100%" }}
     >
       <div className='flex-1 flex flex-col'>

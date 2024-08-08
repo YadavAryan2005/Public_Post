@@ -1,6 +1,5 @@
 "use client";
 import { setBlog } from "@/app/actions";
-import { auth } from "@/auth";
 import { notification } from "antd";
 import { useState } from "react";
 
@@ -99,7 +98,7 @@ function NewBlog() {
             className='text-white relative font-serif flex flex-col gap-6 bg-[#0d0c22c9] backdrop-blur-lg p-6 rounded-lg shadow-lg'
             onSubmit={addblock}
           >
-            <h2 className='text-2xl font-bold mb-4'>Create a Blog Post</h2>
+            <h2 className='text-2xl font-bold mb-4'>Create a New Post </h2>
             <input
               type='file'
               name='img'
@@ -131,7 +130,7 @@ function NewBlog() {
               type='submit'
               className='p-3 rounded-md bg-purple-600 hover:bg-purple-700 transition duration-300 text-white font-bold'
             >
-              Add Blog
+              Add Post
             </button>
           </form>
         </div>

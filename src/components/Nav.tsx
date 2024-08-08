@@ -8,7 +8,7 @@ const navLinks = [
   { name: "Home", link: "/" },
   { name: "About", link: "/#about" },
   { name: "Contact", link: "/#contact" },
-  { name: "Blog", link: "/blog" },
+  { name: "Post", link: "/blog" },
 ];
 function Nav() {
   const { data: session, status } = useSession();
