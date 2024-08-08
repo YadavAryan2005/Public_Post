@@ -1,7 +1,9 @@
 "use client";
 import BlogForm from "@/components/BlogForm";
 import NewBlog from "@/components/NewBlog";
-import { createContext, useEffect, useState } from "react";
+import { useSession } from "next-auth/react";
+import { redirect } from "next/navigation";
+import { createContext, useEffect, useLayoutEffect, useState } from "react";
 import { BlogDocument } from "../../../model/Blog";
 import Loading from "../loading"; // Assume you have a Loading component
 const BlogContext = createContext<BlogDocument[] | null>(null);
@@ -10,11 +12,16 @@ function Blog() {
   const [open, setOpen] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(true);
 
+  const { data: session } = useSession();
+  useLayoutEffect(() => {
+    if (!session) {
+      redirect("/login");
+    }
+  }, [session]);
   const getData = async (): Promise<void> => {
     let blogPostData = await fetch("/api/blog");
     setBlog(await blogPostData.json());
   };
-
   useEffect(() => {
     // Show loading for 3 seconds before fetching data
     const timer = setTimeout(() => {

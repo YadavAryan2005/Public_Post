@@ -23,9 +23,9 @@ export default async function RootLayout({
       <body className={inter.className} style={{ backgroundColor: "#0d0c22" }}>
         <SessionProvider session={session}>
           <Nav />
+          {children}
+          <Footer />
         </SessionProvider>
-        {children}
-        <Footer />
       </body>
     </html>
   );
