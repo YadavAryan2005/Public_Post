@@ -5,12 +5,16 @@ export interface BlogDocument extends Document {
   img: string;
   title: string;
   description: string;
+  name: string;
+  email: string;
 }
 
 const blogSchema = new Schema<BlogDocument>({
   img: { type: String, required: true },
   title: { type: String, unique: true, required: true },
   description: { type: String, required: true },
+  name: { type: String },
+  email: { type: String },
 });
 
 const BlogModel =

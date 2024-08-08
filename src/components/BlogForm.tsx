@@ -7,7 +7,7 @@ function BlogForm(props: any) {
   return (
     <div
       key={props.id}
-      className='bg-gray-800 text-white p-5 flex flex-col rounded-md border border-gray-700 overflow-hidden shadow-lg'
+      className='bg-gray-800 text-white sm:min-w-[400px]  p-5 flex flex-col rounded-md border border-gray-700 shadow-lg'
       style={{ height: "100%" }}
     >
       <div className='flex-1 flex flex-col'>
@@ -40,7 +40,17 @@ function BlogForm(props: any) {
             {props.description.slice(0, 25) + "...."}
           </p>
           <Link
-            href={{ pathname: `/blog/${props.id}`, query: { id: props.id, title: props.title, description: props.description, img: props.img} }}
+            href={{
+              pathname: `/blog/${props.id}`,
+              query: {
+                id: props.id,
+                title: props.title,
+                description: props.description,
+                img: props.img,
+                name: props.name,
+                email: props.email,
+              },
+            }}
             className='mt-4 bg-purple-600 hover:bg-purple-700 transition duration-300 py-2 px-4 rounded-md'
           >
             Read More..

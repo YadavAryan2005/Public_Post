@@ -1,7 +1,7 @@
 "use client";
 import BlogForm from "@/components/BlogForm";
 import NewBlog from "@/components/NewBlog";
-import { useEffect, useState,createContext } from "react";
+import { createContext, useEffect, useState } from "react";
 import { BlogDocument } from "../../../model/Blog";
 import Loading from "../loading"; // Assume you have a Loading component
 const BlogContext = createContext<BlogDocument[] | null>(null);
@@ -47,7 +47,7 @@ function Blog() {
       </div>
       <div className='bg-[#0d0c22] mt-20 flex flex-col w-full  p-2 pt-8 md:pt-2 pb-0 lg:min-h-[98vh]  justify-center min-h-[500px]'>
         <div className='relative max-w-[2000px] xl:px-[150px] md:px-[30px] lg:px-[90px] sm:px-[20px] justify-center items-center sm:flex'>
-          <div className='bg-[#0d0c22] px-2 grid  grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5'>
+          <div className='bg-[#0d0c22] px-2 sm:flex flex-wrap justify-center   gap-5'>
             {blog?.map((data) => (
               <BlogForm
                 key={data._id}
@@ -55,6 +55,8 @@ function Blog() {
                 img={data.img}
                 title={data.title}
                 description={data.description}
+                name={data.name}
+                email={data.email}
               />
             ))}
           </div>

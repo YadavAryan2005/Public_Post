@@ -1,5 +1,6 @@
 "use client";
 import { setBlog } from "@/app/actions";
+import { auth } from "@/auth";
 import { notification } from "antd";
 import { useState } from "react";
 
@@ -52,10 +53,13 @@ function NewBlog() {
       if (!response.ok) {
         throw new Error("File upload failed");
       }
-
       const fi = await response.json();
       console.log(fi);
-      const data = await setBlog({ img: fi.name, title, description });
+      const data = await setBlog({
+        img: fi.name,
+        title,
+        description,
+      });
 
       if (data === "success") {
         api["success"]({

@@ -2,7 +2,14 @@ import Image from "next/image";
 function Blog({
   searchParams,
 }: {
-  searchParams: { id: string; title: string; description: string; img: string };
+  searchParams: {
+    id: string;
+    title: string;
+    description: string;
+    img: string;
+    name: string;
+    email: string;
+  };
 }) {
   return (
     <div className='bg-[#0d0c22] mt-20 relative flex min-h-[86vh] w-full rounded-xl p-4 pt-8 lg:min-h-[98vh]'>
@@ -28,13 +35,13 @@ function Blog({
         <div className='w-full md:w-1/2 p-6 bg-gray-800 rounded-lg shadow-lg text-white'>
           <div className='flex flex-col space-y-2 mb-4'>
             <p className='text-lg font-semibold'>
-              Author: <span className='font-normal'>{"Aryan Yadav"}</span>
+              Author: <span className='font-normal'>{searchParams.name}</span>
             </p>
             <p className='text-lg font-semibold'>
               Title: <span className='font-normal'>{searchParams.title}</span>
             </p>
             <p className='text-lg font-semibold'>
-              Email: <span className='font-normal '>{"Aryan@gmail.com"}</span>
+              Email: <span className='font-normal '>{searchParams.email}</span>
             </p>
           </div>
           <div className='text-lg font-medium'>
