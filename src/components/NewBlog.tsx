@@ -59,7 +59,11 @@ function NewBlog() {
               onSuccess={async ({ event, info }) => {
                 if (event === "success") {
                   console.log(info);
-                  setImg((await info?.public_id) as string);
+                  if (typeof info === "string") {
+                    setImg(info);
+                  } else {
+                    setImg(( info?.public_id) as string);
+                  }
                 }
               }}
             >

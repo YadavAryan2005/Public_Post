@@ -6,7 +6,7 @@ import {
 import Link from "next/link";
 function Footer() {
   return (
-    <div className='w-[100%] sm:fixed bottom-0 text-white bg-slate-800 p-3 z-20 mt-5'>
+    <div className='w-[100%] sm:mt-20 sm:fixed bottom-0 text-white bg-slate-800 p-3 z-20 mt-5'>
       <div className='max-w-[2000px] xl:px-[150px] md:px-[30px]  lg:px-[90px] sm:px-[20px] justify-between items-center flex flex-col sm:flex-row'>
         <a
           href='#'

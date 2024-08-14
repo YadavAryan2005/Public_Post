@@ -20,7 +20,7 @@ async function Homepage() {
             <p> Thoughts</p>
             <p> Agency</p>
           </h1>
-          <p className='text-sm font-thin text-[#fbfbfbc4]'>
+          <p className='text-sm text-[#fbfbfbc4]'>
             Welcome to our community. Your posts are public and visible to
             everyone. Share your thoughts openly while adhering to our community
             guidelines for a respectful environment
