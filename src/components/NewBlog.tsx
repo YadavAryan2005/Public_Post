@@ -1,65 +1,20 @@
 "use client";
 import { setBlog } from "@/app/actions";
 import { notification } from "antd";
+import { CldUploadWidget } from "next-cloudinary";
 import { useState } from "react";
 
 function NewBlog() {
   const [api, contextHolder] = notification.useNotification();
-  const [file, setFile] = useState<any>(null);
+  const [img, setImg] = useState("");
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
 
-  const allowedFileTypes = [
-    "image/jpeg",
-    "image/png",
-    "image/gif",
-    "image/bmp",
-    "image/webp",
-    "image/x-icon",
-    "application/pdf",
-  ];
-
   async function addblock(e: any) {
     e.preventDefault();
-    if (!file) {
-      api["error"]({
-        message: "No File Selected",
-        description: "Please select a file to upload.",
-        duration: 3,
-      });
-      return;
-    }
-
-    if (!allowedFileTypes.includes(file.type)) {
-      api["error"]({
-        message: "Invalid File Type",
-        description:
-          "Please upload a valid file type: .jpg, .png, .gif, .bmp, .webp, .ico, .pdf.",
-        duration: 3,
-      });
-      return;
-    }
 
     try {
-      const formData = new FormData();
-      formData.append("file", file);
-
-      let response = await fetch("/api", {
-        method: "POST",
-        body: formData,
-      });
-
-      if (!response.ok) {
-        throw new Error("File upload failed");
-      }
-      const fi = await response.json();
-      console.log(fi);
-      const data = await setBlog({
-        img: fi.name,
-        title,
-        description,
-      });
-
+      let data = await setBlog({ img, title, description });
       if (data === "success") {
         api["success"]({
           message: "New Blog Added",
@@ -99,14 +54,24 @@ function NewBlog() {
             onSubmit={addblock}
           >
             <h2 className='text-2xl font-bold mb-4'>Create a New Post </h2>
-            <input
-              type='file'
-              name='img'
-              onChange={(e) => setFile(e.target.files?.[0])}
-              accept='.jpg,.jpeg,.png,.gif,.bmp,.webp,.ico,.pdf'
-              required
-              className='p-3 rounded-md bg-white/20 border border-gray-300 focus:border-purple-500 focus:outline-none focus:ring-2 focus:ring-purple-500 transition duration-300'
-            />
+            <CldUploadWidget
+              uploadPreset='b8nzwd9s'
+              onSuccess={async ({ event, info }) => {
+                if (event === "success") {
+                  console.log(info);
+                  setImg((await info?.public_id) as string);
+                }
+              }}
+            >
+              {({ open }) => (
+                <button
+                  onClick={() => open?.()}
+                  className='p-3 rounded-md bg-purple-600 hover:bg-purple-700 transition duration-300 text-white font-bold'
+                >
+                  Upload Image
+                </button>
+              )}
+            </CldUploadWidget>
             <input
               type='text'
               name='title'

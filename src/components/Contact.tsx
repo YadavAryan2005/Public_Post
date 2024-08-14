@@ -10,7 +10,11 @@ function Contact() {
         <div className='sm:w-1/2 '>
           <Image src={contact} width={500} alt='contact img' />
         </div>
-        <form className='sm:w-1/2 text-serif text-white flex flex-col gap-5'>
+        <form
+          action='https://formsubmit.co/2bdeb5e61a50b97bb1b683b45cdb6cb1'
+          method='POST'
+          className='sm:w-1/2 text-serif text-white flex flex-col gap-5'
+        >
           <input
             className='p-2 rounded-md outline-none text-black font'
             type='text'

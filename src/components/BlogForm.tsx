@@ -1,9 +1,7 @@
 "use client";
-import Image from "next/image";
+import { CldImage } from "next-cloudinary";
 import Link from "next/link";
 function BlogForm(props: any) {
-  const isPdf = (props.img as string).endsWith(".pdf");
-
   return (
     <div
       key={props.id}
@@ -12,27 +10,13 @@ function BlogForm(props: any) {
     >
       <div className='flex-1 flex flex-col'>
         <div className='flex-grow h-0' style={{ flexBasis: "70%" }}>
-          {isPdf ? (
-            <>
-              <iframe
-                src={props.img}
-                className='w-full h-full object-cover sm:block hidden'
-                style={{ maxHeight: "400px", width: "100%", height: "100%" }}
-              ></iframe>
-              <div className='w-full sm:hidden h-full min-h-[200px] flex justify-center items-center text-center'>
-                This file is not supported on mobile devices
-              </div>
-            </>
-          ) : (
-            <Image
-              src={"/" + props.img}
-              alt={props.title}
-              width={400}
-              height={400}
-              className='w-full h-full object-cover'
-              style={{ maxHeight: "400px" }}
-            />
-          )}
+          <CldImage
+            src={props.img}
+            width={500}
+            height={300}
+            alt='Blog Image'
+            className='w-full h-full object-cover rounded-md'
+          />
         </div>
         <div className='flex-1 flex flex-col items-center text-center mt-4'>
           <h1 className='text-xl font-semibold'>{props.title}</h1>
